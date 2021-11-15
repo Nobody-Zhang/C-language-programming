@@ -1,21 +1,30 @@
 #include<stdio.h>
 
-int pow(int a,int k)
+int f(int x)
 {
 	int ans=1;
-	while(--k)
+	while(x--)
 	{
-		ans*=a;
+		ans<<=1;
 	}
-	return ans;
+	return ans-1;
+}
+
+int judge(int x)
+{
+	for(int i=2;i*i<=x;i++) if(x%i==0) return 1;
+	return 0;
 }
 
 int main()
 {
-	int x;
-	scanf("%d",&x);
-	for(int i=1,j=pow(2,i)-1;j<=x;i++)
+	int m;
+	scanf("%d",&m);
+	for(int i=2;1;i++)
 	{
-		
+		int tmp=f(i);
+		if(tmp>m) return 0;
+		if(judge(tmp)) continue;
+		printf("M(%d)=%d\n",i,tmp);
 	}
 }
